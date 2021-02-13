@@ -9,6 +9,8 @@
 		private $tpl;
 		private $options = [];
 		private $defaults = [
+			"header"=>true,
+			"footer"=>true,
 			"data"=>[]
 		];
 
@@ -29,7 +31,7 @@
 			//As variáveis vão vir de acordo com a rota no Slim
 			$this->setData($this->options["data"]);
 
-			$this->tpl->draw("header"); //Esse arquivo vai repetir em todas as páginas
+			if ($this->options["header"] === true) $this->tpl->draw("header"); //Esse arquivo vai repetir em todas as páginas
 		}
 
 		private function setData($data = array())
@@ -53,7 +55,7 @@
 		{
 			//Quando esta classe sair da memória do PHP, vamos adicionar o footer
 			//Aqui podemos colocar javascripts e tudo que quisermos que repita em todas as telas
-			$this->tpl->draw("footer");
+			if ($this->options["footer"] === true) $this->tpl->draw("footer");
 		}
 	}
 
