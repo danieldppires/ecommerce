@@ -12,12 +12,12 @@
 			"data"=>[]
 		];
 
-		public function __construct($opts = array())
+		public function __construct($opts = array(), $tpl_dir = "/views/")
 		{
 			$this->options = array_merge($this->defaults, $opts); //Se passar informação no segundo parâmetro e ele der conflito com o defaults ele sobreescreve o defaults e usa o opts. O merge vai mesclar as duas paginas dentro deste atributo
 
 			$config = array(
-				"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/", //Pasta onde está o template
+				"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"].$tpl_dir, //Pasta onde está o template /views/
 				"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/", //
 				"debug"         => false
 		   	);

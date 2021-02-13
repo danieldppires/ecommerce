@@ -6,6 +6,7 @@
 	//Estes são namespaces. Eu tenho dezenas de classes dentro do vendor e aqui eu digo quais eu quero usar
 	use \Slim\Slim;
 	use \Hcode\Page;
+	use \Hcode\PageAdmin;
 
 	$app = new Slim(); //Aqui é por causa das rotas. Antes chamava index.php, default.php, cadastro.php
 	//Agora por causa de SEO e rankeamento é tudo rota. Passa o nome na URL e o Slim manda para algum lugar
@@ -19,6 +20,13 @@
 		$page->setTpl("index"); //Neste momento ele chama o arquivo index.html (o corpo da página)
 
 		//Aqui ele acaba a execução e o PHP vai limpar a memória, chamando o método destruct, que irá incluir o footer
+	});
+
+	$app->get('/admin', function() //Rota para o admin
+	{
+		$page = new PageAdmin(); 
+
+		$page->setTpl("index"); 
 	});
 
 	$app->run(); //É quem faz tudo acima rodar
